@@ -2,49 +2,28 @@
 #include <iostream>
 using namespace std;
 
-bool isPower(int x) {
-    while (x%3 == 0)  x = x / 3;
-
-    return x == 1;
-}
-
-int getNearestPower3(int n) {
-    if (n == 1) return 0;
-
-    int x = 0;
-    while (pow(3, x) < n) {
-        ++x;
-    }
-    return --x;
-}
-
-bool getGoodNumber(int n) {
-    if (isPower(n))
-        return true;
-
-    int temp = n;
-    
-    while (temp != 1) {
-        temp = pow(3, getNearestPower3(temp));
-        
-        // cout << "Temp: " << temp << " " << "n: " << n << endl;
-        if (n - temp >= 0) n -= temp;
-
-        if (n == 0) return true;
-    }
-    return false;
-}
-
 int main() {
+    cin.sync_with_stdio(false);
+    cin.tie(NULL);
     int T;
-    cin >> T;
+    scanf("%d", &T);
     while (T--) {
         int n;
-        cin >> n;
-        if (n == 1)
-            {cout << 1 << '\n'; continue;}
-    
-        while (!getGoodNumber(n)) ++n;
-        cout << n << '\n';
+        scanf("%d", &n);
+        bool alk;
+        while (true) {
+        alk = true;
+        int c = n;
+        while (c > 0) {
+            if (alk && (c % 3) == 2)
+                alk = false;
+            
+            c /= 3;
+        }
+        if (alk)
+            break;
+        ++n;
+        }
+        cout << n << endl;
     }
 }
