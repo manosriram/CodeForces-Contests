@@ -7,8 +7,8 @@ int main() {
     bool done = false;
     cin >> n >> p >> w >> d;
 
-    for (ld x = 0; x <= n; x++) {
-        for (ld y = 0; y <= n; y++) {
+    for (ld x = 0; x <= n && x < p; x++) {
+        for (ld y = 0; y <= n && y < p; y++) {
             ld z = (n - x - y);
             if (z < 0) continue;
 
