@@ -30,30 +30,21 @@ int main() {
     cin >> n >> l;
     bool isZero = false;
     vector<dbl> diff;
-   
-    for (dbl t = 0;t < n;++t) {
+    
+    for (dbl t=0;t<n;t++) {
         cin >> temp;
-        if (temp == 0)
-            isZero  = true;
-
         diff.pb(temp);
     }
-    
-    // if (!isZero)
-       //  diff.insert(diff.begin(), 0);
-    dbl p; 
-    sort(diff.begin(), diff.end());
-    dbl max_ = DBL_MIN;
-    for (dbl t = 0;t < diff.size() - 1;++t) {
+    sort(diff.begin(), diff.end());  
+    dbl max_ = diff[0];
+    for (dbl t=0;t<n-1;t++) {
         dbl val = diff[t+1] - diff[t];
         if (val > max_)
-           max_ = val;
+            max_ = val;
     }
-    p = max_;
-    p /= 2;
+    
+    max_ /= 2;
+    cout << max(max_, max(diff[0] - 0, l - diff[n-1]));
 
-    if (diff[0] > p)
-        p = diff[0];
 
-    cout << (long double) p << endl;
 }
