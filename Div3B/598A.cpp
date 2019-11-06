@@ -21,31 +21,22 @@ typedef vector<int> vi;
 typedef unordered_map<int, int> ump;
 
 int main() {
-    SPEED;
-    int n, temp;
-    unordered_map<int, int> m;
-    // zfreopen("in.txt", "r", stdin);
+    int a, b, n, S;
+    int T;
+    cin >> T;
+    while (T--) {
+    cin >> a >> b >> n >> S;
     
-    cin >> n;
-    int pt[n+2];
-    for (int t=1;t<=n;t++) {
-        cin >> pt[t];
+    if (a * n < S)
+        S -= a * n;
+    else
+        S -= (S % n) * n;
+
+    if (b >= S)
+        cout << "YES";
+    else
+        cout << "NO";
+
+    cout << '\n';
     }
-    
-    for (int t=1;t<=n;t++) {
-        cin >> temp;
-        m[temp] = t;
-    }
-    trace(3); 
-    int ct = 0, t, j; 
-    
-    int max_ = INT_MIN; 
-    for (int t=1;t<=n;t++) {
-        if (m[pt[t]] > max_)
-            max_ = m[pt[t]];
-        else
-            ++ct;
-    }
-    
-    cout << ct;
 }
