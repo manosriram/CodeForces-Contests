@@ -9,25 +9,21 @@ int main() {
     int temp, n;
     cin >> n;
     unordered_map<int, int> mp;
-    vector<int> v(n);
+    vector<int> v;
     auto itr = v.begin();
 
     for (int t=0;t<n;t++) {
         cin >> temp;
-        v.insert(itr, temp);
+        v.emplace_back(temp);
         ++mp[temp];     
     }
+    reverse(v.begin(), v.end());
+    cout << mp[5] << endl;
+    for (int t = v.size() - 1;t >= 0;t--) {
+        auto mx = max_element(mp.begin(), mp.end())->first;
+        // cout << mx << " ";
+        cout << mp[v[t]] << " ";
 
-    for (int t=n-1;t>=0;--t) {
-        --mp[v[t]];
-        int mx = max_element(mp.begin(), mp.end())->second;
-        int mn = min_element(mp.begin(), mp.end())->second;
-    
-        cerr << t << " " << mx << " " << mn << endl; 
-        if (mx - mn == 1 || mx - mn == mx) {
-            cout << t;
-            break;
-        }
     }
 
 }
