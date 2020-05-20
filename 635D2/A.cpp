@@ -20,17 +20,6 @@ int main() {
     cin >> T;
     while (T--) {
         cin >> a >> b >> c >> d;
-        if (a == b) cout << a;
-        else cout << a+1;
-
-        cout << " ";
-        if (b==c) cout << b;
-        else cout << b+1;
-        
-        cout << " ";
-        if (c==d) cout << c;
-        else cout << c+1;
-
-        cout << endl;
+        cout << b << " " << c << " " << c << endl;
     }
 }
